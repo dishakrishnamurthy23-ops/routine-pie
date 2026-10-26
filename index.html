@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Routine Pie Planner</title>
+<meta name="theme-color" content="#e0568a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Patrick+Hand&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1><input class="who" id="who" aria-label="Your name" value="My" spellcheck="false">'s <span id="title-word">Daily</span> Life ~</h1>
+      <svg class="squig" viewBox="0 0 180 14" aria-hidden="true"><path d="M2 8 C 20 0, 30 14, 48 7 S 78 0, 96 7 S 126 14, 144 6 S 170 2, 178 8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <div class="today-date" id="todayDate"></div>
+      <button class="btn primary" id="installBtn" type="button" hidden>📲 Install app</button>
+    </div>
+    <div class="doodles" aria-hidden="true">
+      <svg width="70" height="44" viewBox="0 0 70 44"><path d="M14 36 C4 36 4 22 15 22 C15 10 32 8 36 18 C40 10 56 12 54 24 C64 24 64 36 54 36 Z" fill="var(--c-sky)" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      <svg width="40" height="40" viewBox="0 0 40 40"><path d="M20 4 L24 15 L36 15 L26 22 L30 34 L20 27 L10 34 L14 22 L4 15 L16 15 Z" fill="var(--c-sun)" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      <svg width="40" height="40" viewBox="0 0 40 40"><path d="M20 34 C8 25 4 18 8 11 C12 5 19 7 20 13 C21 7 28 5 32 11 C36 18 32 25 20 34 Z" fill="var(--c-pink)" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Plans">
+    <button class="tab" role="tab" data-tab="day" id="tab-day">Daily</button>
+    <button class="tab" role="tab" data-tab="week" id="tab-week">Weekly</button>
+    <button class="tab" role="tab" data-tab="month" id="tab-month">Monthly</button>
+    <button class="tab" role="tab" data-tab="year" id="tab-year">Yearly</button>
+  </nav>
+
+  <div class="grid">
+    <div class="wheel-box">
+      <svg id="wheel" viewBox="-235 -235 470 470" role="img" aria-label="Routine wheel"></svg>
+      <div class="notes">
+        <h2 class="notes-h">★ Notes</h2>
+        <ul id="notesList"></ul>
+        <button class="btn addbtn" id="addNote">+ Add note</button>
+      </div>
+      <div class="pinhelp backup">
+        <p>💾 Your plan is saved inside this browser automatically. Keep a backup now and then, in case you clear browser data or move to another computer.</p>
+        <div class="acts" style="justify-content:flex-start"><button class="btn" id="exportBtn" type="button">Download backup</button>
+        <label class="btn" for="importFile">Load backup</label><input type="file" id="importFile" accept=".json,application/json" hidden></div>
+        <p id="backupMsg"></p>
+      </div>
+    </div>
+    <div class="side">
+      <section class="card now" id="nowCard"></section>
+      <section class="card list">
+        <h2 id="listTitle">Today's blocks</h2>
+        <ul class="rows" id="rows"></ul>
+        <button class="btn addbtn" id="addBtn">+ Add a time block</button>
+        <p class="hint" id="hint">Tap a slice or a row to edit it. Starter blocks are examples, change them to yours.</p>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="savebar"><div class="pill" id="savePill" hidden><span id="saveMsg">Saved</span><button class="btn" id="saveNow" hidden>Save now</button></div></div>
+
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
